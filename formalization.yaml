@@ -1,125 +1,101 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
-# formalization.yaml v0.4. Replace every TEMPLATE value before submitting.
-# Replace a placeholder list with [] only when its adjacent comment permits it;
-# lists described as required must remain nonempty.
+# formalization.yaml v0.4
 version: "v0.4"
 
 project:
-  name: "TEMPLATE: name of the formalization"
+  name: "mason-flats"
   description: >-
-    TEMPLATE: concise public account of the mathematical content and principal
-    results of the formalization
-  # Required nonempty list of name strings or mappings with a nonempty name.
+    Lean 4 / Mathlib certificate that Mason’s 1972 conjecture on log-concavity
+    of Whitney numbers of the second kind is false: Larson’s rank-76 dual of
+    the rank-3 parallel extension of U_{3,4} with parallel classes of sizes
+    1, 26, 26, 26 satisfies W_74^2 < W_73 W_75. Flats are counted as cyclic
+    sets in the dual; the closed forms are binomial identities. White’s
+    conjecture from the same paper is not compared.
   authors:
-    - "TEMPLATE: formalizer name"
-  # Required root licence. Keep this in sync with the Apache-2.0 LICENSE file.
+    - "Dan Clemens Posch"
   license: "Apache-2.0"
-  # Required nonempty list of name strings or mappings with a nonempty name.
-  # For a thin wrapper, name people responsible for this submitted wrapper;
-  # submission authorization separately covers the underlying formalization.
   responsible_maintainers:
-    - "TEMPLATE: person responsible for this formalization"
-
-# Omit repository for an ordinary project: Palomar treats this submitted
-# repository as the substantive proof development. If this repository is only
-# a thin Comparator wrapper, uncomment and pin the actual formalization in this
-# exact shape:
-# repository:
-#   substantive_formalization:
-#     id: "TEMPLATE: owner/repository or https://github.com/owner/repository"
-#     revision: "TEMPLATE: full 40-character lowercase commit SHA"
+    - "Dan Clemens Posch"
 
 classification:
-  # Use 1–2 official arXiv identifiers such as math.LO and 1–8 five-character
-  # MSC 2020 identifiers such as 03B35.
-  arxiv: ["TEMPLATE: official arXiv identifier such as math.LO"]
-  msc2020: ["TEMPLATE: five-character MSC 2020 identifier such as 03B35"]
+  arxiv: ["math.CO"]
+  msc2020: ["05B35", "05C31"]
 
 sources:
-  # Sources must be nonempty. Every source needs a title and relationship; the
-  # relationship must be exactly formalizes, adapts, independently-proves,
-  # background, or other.
-  # Choose one result origin:
-  # - For a theorem first presented by this formalization, set one source to
-  #   type: original-proof and relationship: other. All additional source
-  #   relationships must be background or other.
-  # - Otherwise, omit type: original-proof and give at least one source a
-  #   formalizes, adapts, or independently-proves relationship. A new proof of
-  #   a known published result is source-based and uses independently-proves.
-  # Type, authors, contributors, id, location, note, license, and
-  # author_endorsement are optional; remove them when genuinely inapplicable.
-  # Authors are bibliographic authors. Contributors record other source roles,
-  # with one name and free-form role such as editor or problem-proposer.
-  # Type is a concise free-text
-  # description such as article, paper, book, formalization, web post, folklore,
-  # conversation, or other. The exact value original-proof is reserved for the
-  # result-origin declaration described above.
-  # Original-result example:
-  # - title: "TEMPLATE: describe the result first presented here"
-  #   type: original-proof
-  #   relationship: other
-  - title: "TEMPLATE: title of the mathematical source"
+  - title: "Counterexamples to two conjectures about matroids"
     authors:
-      - "TEMPLATE: source author"
-    contributors:
-      - name: "TEMPLATE: source contributor"
-        role: "TEMPLATE: contributor role, for example editor or problem-proposer"
-    id: "TEMPLATE: stable identifier or versioned URL"
-    type: "TEMPLATE: concise source kind, for example article, book, or formalization"
-    location: "TEMPLATE: stable URL or bibliographic location, if available"
-    relationship: "TEMPLATE: formalizes, adapts, independently-proves, background, or other"
-    note: "TEMPLATE: explain relationship or author_endorsement: other; otherwise remove"
-    license: "TEMPLATE: source license or unknown"
-    author_endorsement: "TEMPLATE: participated, endorsed, no-response, not-contacted, declined, n/a, or other"
+      - "Matt Larson"
+    id: "arXiv:2607.02208"
+    type: "article"
+    location: "arXiv:2607.02208, 2026"
+    relationship: "independently-proves"
+    note: >-
+      Formalizes Example 2.2 / Theorem 2.3: the rank-76 graphic matroid of a
+      generalized theta graph with path lengths 26, 26, 26, 1, via Larson’s
+      dual cyclic-set count. Does not formalize White’s conjecture.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Matroids: unimodal conjectures and Motzkin’s theorem"
+    authors:
+      - "John H. Mason"
+    type: "article"
+    location: "Combinatorics (Proc. Conf. Combinatorial Math., Math. Inst., Oxford, 1972), pp. 207–220"
+    relationship: "background"
+    note: "The 1972 conjecture that Whitney numbers of the second kind are log-concave."
+    license: "unknown"
+    author_endorsement: "n/a"
 
-related_formalizations:
-  # Remove this field or use [] when none are known.
-  - id: "TEMPLATE: stable URL or identifier for earlier formalization"
-    relationship: "TEMPLATE: builds-on, adapts, independent, supersedes, or other"
-    note: "TEMPLATE: explain the relationship"
+related_formalizations: []
 
 status:
   scope: >-
-    TEMPLATE: state exactly what is and is not formalized, including any weaker
-    theorem, changed hypotheses, or omitted material.
-  # Count the proof development, excluding Challenge.lean's deliberate sorry.
-  # Replace each count with an unquoted nonnegative integer, for example 0.
-  sorry_count: "TEMPLATE: unquoted nonnegative integer"
-  sorry_in_definitions: "TEMPLATE: unquoted nonnegative integer"
-  axioms: ["TEMPLATE: declaration names, or replace this list with []"]
-  # status.main_results is optional. Add it only when a short curated
-  # project-level list is useful; it need not mirror Comparator declarations.
+    Compared: MasonFlats.mason_log_concave_false, existence of a rank-76
+    matroid on 79 elements with W_74^2 < W_73 W_75. Not compared: White’s
+    conjecture, unimodality of Whitney numbers, or ultra-log-concavity.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Quot.sound", "Classical.choice"]
 
 automation:
   methods:
-    - method: "TEMPLATE: manual, copilot, agent, autonomous, or other"
-      models: ["TEMPLATE: model names, or replace this list with []"]
-      framework: "TEMPLATE: framework name, or n/a"
-      tool_setup: "TEMPLATE: exact detail, such as AI-assisted, editors, tactics, agents, or other tools used"
+    - method: "agent"
+      models: ["grok-4.6"]
+      framework: "Grok Build TUI"
+      tool_setup: "AI-assisted Lean 4 with Mathlib v4.32.0; local lake verify"
       cost:
-        wall_time: "TEMPLATE: approximate elapsed effort"
-        spend_usd: "TEMPLATE: amount, subscription-based, or not tracked"
-        hardware: "TEMPLATE: local machine, API-only, or other"
-      prompting_notes: "TEMPLATE: representative prompting notes, or n/a"
-  spend_usd: "TEMPLATE: total amount, subscription-based, or not tracked"
-  notes: "TEMPLATE: describe the overall human and automation workflow"
+        wall_time: "one session"
+        spend_usd: "not tracked"
+        hardware: "local machine"
+      prompting_notes: "Larson dual cyclic-set count; no native_decide"
+  spend_usd: "not tracked"
+  notes: >-
+    Palomar certificate of Larson’s counterexample. Cyclic-set classification
+    on the rank-3 dual plus binomial arithmetic; no enumeration of rank-76 flats.
 
 fidelity:
-  divergences: "TEMPLATE: all known divergences from the cited source, or none known"
+  divergences: >-
+    The compared matroid is constructed as the dual of an explicit rank-3
+    parallel extension of U_{3,4} on Fin 79, which is the dual of the graphic
+    matroid of Larson’s generalized theta graph. Graphic-matroid API is not
+    used; the dual identification of Whitney numbers with cyclic-set counts
+    is proved.
 
 review:
-  status: "TEMPLATE: honest review status, for example self-assessed"
+  status: "self-assessed"
   reviewers:
-    - "TEMPLATE: reviewer name, or none"
-  notes: "TEMPLATE: describe statement audits and mathematical review performed"
+    - "none"
+  notes: "Statement surface follows Larson Theorem 2.3: W_74^2 < W_73 W_75."
 
 alignment:
-  namespace: "TEMPLATE: project namespace"
+  namespace: "MasonFlats"
   statements:
-    - source: "TEMPLATE: source theorem or section"
-      lean: "TEMPLATE: fully qualified Lean declaration"
-      module: "TEMPLATE: Lean module containing the declaration"
-      status: "TEMPLATE: proved, partial, adapted, or other honest description"
-      note: "TEMPLATE: explain the correspondence and any qualifications"
+    - source: "Larson, Theorem 2.3 / Example 2.2"
+      lean: "MasonFlats.mason_log_concave_false"
+      module: "Challenge"
+      status: "proved"
+      note: >-
+        Rank-76 matroid on 79 elements with W_74^2 < W_73 W_75, via dual
+        cyclic-set counts.
 
-acknowledgements: "TEMPLATE: libraries, tools, and people to credit"
+acknowledgements: >-
+  Mathlib; Larson arXiv:2607.02208; Mason 1972; Palomar template.
